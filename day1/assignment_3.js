@@ -11,32 +11,28 @@ const marks = [78, 92, 35, 88, 40, 67];
 */
 
 
-let passMarks = marks.filter((elem) => {
+let res1 = marks.filter((elem) => {
     return elem >= 40;
 })
 
-console.log(passMarks);
-
-let graceMarks = marks.map((elem) => {
+let res2 = marks.map((elem) => {
     return elem+5;
 })
 
-console.log(graceMarks);
-
-let greatestMark = marks.reduce((acc, elem) => {
+let res3 = marks.reduce((acc, elem) => {
     return acc > elem ? acc : elem;
 })
 
-console.log(greatestMark);
-
-
-let firstBelow40 = marks.find((elem) => {
+let res4 = marks.find((elem) => {
     return elem < 40;
 })
 
-console.log(firstBelow40);
-
-let findIdx = marks.findIndex((elem) => {
+let res5 = marks.findIndex((elem) => {
     return elem === 92;
 })
-console.log(findIdx);
+
+console.log("Marks greater than 40: ", res1);
+console.log("Marks after adding grace marks: ", res2);
+console.log("Highest Mark: ", res3);
+console.log("First mark below 40: ", res4);
+console.log("Index of mark 92: ", res5);

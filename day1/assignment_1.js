@@ -11,30 +11,29 @@ const temperatures = [32, 35, 28, 40, 38, 30, 42];
 */
 
 
-let filterTemp = temperatures.filter((elem)=>{
+let res1 = temperatures.filter((elem)=>{
     return elem >= 35;
 })
 
-console.log(filterTemp);
-
-let converted = temperatures.map((temp) => {
+let res2 = temperatures.map((temp) => {
     return (temp * 9/5) + 32;
 })
 
-console.log(converted);
-
-let avgTemp = temperatures.reduce((acc, temp) => {
+let res3 = temperatures.reduce((acc, temp) => {
     return acc + temp;
 }) / temperatures.length;
-console.log(avgTemp);
 
-let firstAbove40 = temperatures.find((temp) => {
+let res4 = temperatures.find((temp) => {
     return temp > 40;
-})
-console.log(firstAbove40)
+});
 
-let findidx = temperatures.findIndex((e) => {
+let res5 = temperatures.findIndex((e) => {
     return e === 28;
-})
+});
 
-console.log(findidx)
+
+console.log("Temperatures above 35: ", res1);
+console.log("Temperatures in Fahrenheit: ", res2);
+console.log("Average Temperature: ", res3);
+console.log("First temperature above 40: ", res4);
+console.log("Index of temperature 28: ", res5);

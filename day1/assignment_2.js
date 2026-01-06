@@ -12,33 +12,28 @@ const courses = ["javascript", "react", "node", "mongodb", "express"];
 
 */
 
-let lenG5 = courses.filter((course)=>{
+let res1 = courses.filter((course)=>{
     return course.length > 5;
 })
 
-console.log(lenG5);
-
-let upperCased = courses.map((elem) => {
+let res2 = courses.map((elem) => {
     return elem.toUpperCase();
 })
 
-console.log(upperCased);
-
-let singleString = courses.reduce((acc, elem) => {
+let res3 = courses.reduce((acc, elem) => {
     return acc+ " / " +elem.toUpperCase();
 })
 
-console.log(singleString);
-
-let findCourse = courses.find((course) => {
+let res4 = courses.find((course) => {
     return course === "react";
 })
 
-console.log(findCourse);
-
-
-let findIdx = courses.findIndex((course) => {
+let res5 = courses.findIndex((course) => {
     return course === "node";
 })
 
-console.log(findIdx);
+console.log("Course length greater than 5: ", res1);
+console.log("Courses in Uppercase: ", res2);
+console.log("Courses as single string: ", res3);
+console.log("Finding course react: ", res4);
+console.log("Index of course node: ", res5);

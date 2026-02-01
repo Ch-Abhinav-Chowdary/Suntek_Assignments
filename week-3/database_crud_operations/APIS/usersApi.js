@@ -62,3 +62,10 @@ userApp.delete('/users/:id', async(req, res)=>{
     //send response
     res.status(200).send({ "message": "User deleted successfully" , payload: deletedObj});
 })
+
+
+/* 
+
+I have used thunderClient to test the API endpoints.
+
+*/

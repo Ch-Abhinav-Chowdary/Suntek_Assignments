@@ -61,3 +61,14 @@ productApp.put('/products/:id', async(req, res)=>{
 
     res.send({ message: "Product modified successfully", payload: latestProduct });
 })
+
+
+//Delete product by ID
+productApp.delete('/products/:id', async(req, res)=>{
+    //retrieve id from req params
+    let id = req.params.id;
+
+    //deleting the product from database
+    await ProductModel.findByIdAndDelete(id);
+    res.send({ message: "Product deleted successfully" });
+});

@@ -1,0 +1,12 @@
+POST http://localhost:8000/user-api/auth
+Content-Type: application/json
+
+{
+    "username": "Rehman Dakait baloch",
+    "password": "password"
+}
+
+###
+GET http://localhost:8000/user-api/test
+Content-Type: application/json
+

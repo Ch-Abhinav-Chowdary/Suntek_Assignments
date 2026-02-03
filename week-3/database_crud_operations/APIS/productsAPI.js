@@ -72,3 +72,4 @@ productApp.delete('/products/:id', async(req, res)=>{
     await ProductModel.findByIdAndDelete(id);
     res.send({ message: "Product deleted successfully" });
 });
+

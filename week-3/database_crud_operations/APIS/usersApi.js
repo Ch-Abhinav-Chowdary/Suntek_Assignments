@@ -1,7 +1,10 @@
 import express from 'express';
 import { UserModel } from '../models/userSchema.js';
-export const userApp = express.Router();
+import { hash, compare } from 'bcryptjs'
+import { verifyToken } from '../middleware/verifyToken.js';
+import jwt from 'jsonwebtoken';
 
+export const userApp = express.Router();
 
 // USER API ROUTES
 
@@ -10,6 +13,10 @@ export const userApp = express.Router();
 userApp.post('/user', async(req, res)=>{
     //get new user from req
     let newUser = req.body;
+    //hash the password
+    let hashedPassword = await hash(newUser.password, 7);
+    //replace the original password with hashed password
+    newUser.password = hashedPassword;
     //Create new user document 
     let newUserDoc = new UserModel(newUser);
     //save to DB
@@ -62,6 +69,44 @@ userApp.delete('/users/:id', async(req, res)=>{
     //send response
     res.status(200).send({ "message": "User deleted successfully" , payload: deletedObj});
 })
+
+
+//User Authentication Route
+userApp.post('/auth', async (req, res)=>{
+    //get user credentials object
+    let { username, password } = req.body;
+
+    //check for username
+    let userOfDb = await UserModel.findOne({ username: username });
+    //if user not found
+
+    if(userOfDb === null) {
+        return res.status(404).json({ message: "Invalid Username" });
+    }
+
+    //compare password
+    let status = await compare(password, userOfDb.password);
+    //if passwords not match
+    if(status === false) return res.status(401).json({ message: "Invalid Password" });
+
+    //create signed token
+    let signedUser = jwt.sign({username: username}, "secretkey", { expiresIn: 20 });
+
+    //save the token as httpOnly cookie
+    res.cookie("token", signedUser, { httpOnly: true,
+        secure: false, //set to true if using https
+        sameSite: 'lax'
+     });
+
+    //send response
+    res.status(200).json({ message: "User authenticated successfully"});
+});
+
+
+//test route
+userApp.get('/test', verifyToken, (req, res)=>{
+    res.json({ message: "Test route" });
+});
 
 
 /* 

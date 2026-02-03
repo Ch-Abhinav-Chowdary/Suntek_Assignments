@@ -4,6 +4,8 @@ import express from 'express';
 import { userApp } from './APIS/usersApi.js';
 import { connect } from "mongoose";
 import { productApp } from './APIS/productsAPI.js';
+import cookieParser from "cookie-parser"
+import helmet from 'helmet';
 
 //variables declaration
 const app = express();
@@ -30,6 +32,8 @@ connection();
 
 // Middleware section
 app.use(express.json());
+app.use(cookieParser());
+app.use(helmet())
 
 app.use('/user-api', userApp);
 app.use('/product-api', productApp);

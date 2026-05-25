@@ -42,12 +42,21 @@ This folder contains front-end practice exercises for Week 6. Each `program` is 
 
 ## Definitions
 
-- Semantic HTML: Using tags that convey meaning and structure to browsers and assistive tech.
-- Flexbox: A one-dimensional layout model for aligning items in rows or columns.
-- CSS Grid: A two-dimensional layout system for creating complex responsive layouts.
-- Media Query: CSS rule that applies styles conditionally based on viewport size.
-- CSS Variable: A custom property (e.g., `--main-color`) used to store reusable values.
-- HTML5 Validation: Browser-native input validation using attributes like `required` and `pattern`.
+- Semantic HTML: Using tags that convey meaning and structure to browsers and assistive technology, improving readability and accessibility.
+- Box Model: The layout model in CSS that defines how margin, border, padding, and content area combine to determine element size and spacing.
+- Flexbox: A one-dimensional CSS layout system for arranging elements along a row or column with flexible alignment and spacing.
+- CSS Grid: A two-dimensional CSS layout system for placing items into rows and columns to create responsive grid structures.
+- Media Query: A CSS technique that applies styles only when certain screen or device conditions are met, such as width or orientation.
+- Fluid Units: Sizing units like `%` and `rem` that scale relative to the viewport or root font size for responsive design.
+- Form Design: Creating input forms with fields, labels, and controls in a way that supports usability and data entry.
+- HTML5 Validation: Browser-native validation that checks input constraints such as `required`, `type`, `minLength`, and `pattern` before form submission.
+- CSS Variables: Reusable custom properties defined with `--name` and accessed via `var(--name)` to simplify theme and spacing values.
+- Transition: A CSS property that animates changes between styles smoothly over a specified duration.
+- Transform: A CSS property that changes an element's shape or position, including translation, rotation, scaling, and skewing.
+- Accessibility: Design practices that make content usable by people with disabilities, such as meaningful alt text and keyboard-friendly focus states.
+- Asset Management: Organizing and referencing image files and other static resources consistently across HTML and CSS.
+- Visual Hierarchy: Using visual styling like size, color, and spacing to guide users through content in order of importance.
+- Component Styling: Applying CSS to UI elements such as cards, buttons, navigation, and inputs so they look consistent and readable.
 
 ## Contents
 

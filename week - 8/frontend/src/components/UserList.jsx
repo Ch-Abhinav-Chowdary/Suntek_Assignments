@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react";
 import { useNavigate } from "react-router";
+import mockUsers from "../data/mockUsers";
 const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
 function UserList() {
     let [users,setUsers]=useState([]);
@@ -18,11 +19,13 @@ function UserList() {
                 //update users state
                 setUsers(resObj.payload);
             }else{
-                console.log("error in fetching users")
+                console.log("error in fetching users - using mock data")
+                setUsers(mockUsers);
             }
         }catch(err){
-            //set error
+            //set error and fallback to mock data
                 console.log(err)
+                setUsers(mockUsers);
             }
         }
         getUsers();

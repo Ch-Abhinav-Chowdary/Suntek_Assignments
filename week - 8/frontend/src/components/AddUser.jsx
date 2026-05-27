@@ -1,41 +1,33 @@
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router";
 import { useState } from "react";
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
+import userService from "../services/userService";
+
 function AddUser() {
     const {register,
         handleSubmit ,
         formState:{errors},
     } = useForm();
 
-    
+
     let [error,setError]=useState(null);
     let [loading,setLoading]=useState(false);
     let navigate=useNavigate();
     //form submit
-    const onUserCreate=async(newUser)=>{
+    const onUserCreate=(newUser)=>{
         //console.log(newUser);
         setLoading(true)
-        //make api call to create user
+        //create user in local storage
         try{
-          let res=await fetch(`${API_BASE_URL}/user-api/users`,{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify(newUser),
-                
-            });
-            
-            if(res .status===201){
+            const result = userService.createUser(newUser);
+
+            if(result.success){
                 //user created navigate to user list page
                 navigate("/userslist")
             }
             //if error in creating user show error message
             else{
-                console.log(res)
-                throw new Error("Error in creating user")
-                
+                throw new Error(result.error || "Error in creating user")
             }
         }
         catch (err) {

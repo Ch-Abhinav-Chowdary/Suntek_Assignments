@@ -1,31 +1,19 @@
 import { useEffect,useState } from "react";
 import { useNavigate } from "react-router";
-import mockUsers from "../data/mockUsers";
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
+import userService from "../services/userService";
+
 function UserList() {
     let [users,setUsers]=useState([]);
     let navigate=useNavigate();
     //const [gotoUser,setGoToUser]=useState(false);
     useEffect(()=>{
-        async function getUsers(){
+        function getUsers(){
             try{
-            let res=await fetch(`${API_BASE_URL}/user-api/users`, {
-                method:"GET"
-            })
-            if (res.status===200){
-                console.log("users fetched successfully")
-                //extract data from response
-                let resObj=await res.json();
-                //update users state
-                setUsers(resObj.payload);
-            }else{
-                console.log("error in fetching users - using mock data")
-                setUsers(mockUsers);
-            }
-        }catch(err){
-            //set error and fallback to mock data
+                const usersList = userService.getAllUsers();
+                setUsers(usersList);
+            }catch(err){
                 console.log(err)
-                setUsers(mockUsers);
+                setUsers([]);
             }
         }
         getUsers();

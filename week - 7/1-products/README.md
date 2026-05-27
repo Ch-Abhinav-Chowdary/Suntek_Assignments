@@ -1,16 +1,81 @@
-# React + Vite
+# Product Showcase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+A React-based product showcase application that displays products in an organized grid layout. Users can browse through products with detailed information including images, brand names, descriptions, and prices.
 
-Currently, two official plugins are available:
+## Project Structure
+```
+1-products/
+├── src/
+│   ├── components/
+│   │   ├── Product.jsx      # Individual product card component
+│   │   └── Products.jsx     # Products container/list component
+│   ├── App.jsx              # Main application component
+│   ├── App.css              # Application styles
+│   ├── index.css            # Global styles
+│   └── main.jsx             # Application entry point
+├── package.json             # Project dependencies
+├── vite.config.js           # Vite configuration
+└── README.md                # This file
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Product Grid Display**: Shows multiple products in a responsive grid layout
+- **Product Cards**: Each product displays:
+  - Product image
+  - Product name
+  - Brand information
+  - Product description
+  - Price (in rupees ₹)
+- **Component-based Architecture**: Uses reusable Product component for clean code
+- **Tailwind CSS Styling**: Uses utility-first CSS framework for styling
 
-## React Compiler
+## Technologies Used
+- **React** - UI library
+- **Vite** - Build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **JavaScript (ES6+)** - Programming language
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How to Run
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Open your browser and navigate to the provided local URL (typically `http://localhost:5173`)
+
+## Component Details
+
+### Product Component (Product.jsx)
+- **Props**: Accepts product data via props
+  - `image` - Product image URL
+  - `name` - Product name
+  - `brand` - Brand name
+  - `description` - Product description
+  - `price` - Product price
+- **Styling**: Styled with Tailwind CSS for a card-like appearance with yellow background
+
+### Products Component (Products.jsx)
+- Manages the product data
+- Renders multiple Product components
+- Handles product layout and grid display
+
+## Customization
+- Modify product data in `Products.jsx` to add/remove products
+- Update styling in `App.css` or use Tailwind classes in components
+- Change colors, sizes, and layout using Tailwind utility classes
+
+## Build for Production
+```bash
+npm run build
+```
+
+## Notes
+- This is a frontend-only application with no backend dependencies
+- Products are currently static (hardcoded or imported from data)
+- Can be easily extended to fetch products from an API
